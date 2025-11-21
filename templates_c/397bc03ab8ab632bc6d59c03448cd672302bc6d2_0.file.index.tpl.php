@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 3.1.34-dev-7, created on 2019-01-17 09:18:18
-  from '/var/www/html/doxbin.org/smarty/templates/default/index.tpl' */
+  from '/var/www/html/doxbin.com/smarty/templates/default/index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '397bc03ab8ab632bc6d59c03448cd672302bc6d2' => 
     array (
-      0 => '/var/www/html/doxbin.org/smarty/templates/default/index.tpl',
+      0 => '/var/www/html/doxbin.com/smarty/templates/default/index.tpl',
       1 => 1547741896,
       2 => 'file',
     ),

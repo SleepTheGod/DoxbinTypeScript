@@ -83,8 +83,8 @@ export default function HomePage() {
           <a href="https://twitter.com/doxbin" target="_blank" rel="noopener noreferrer">
             Official Doxbin Twitter
           </a>
-          <a href="https://doxbin.org" target="_blank" rel="noopener noreferrer">
-            Mirror Doxbin.org
+          <a href="https://doxbin.com" target="_blank" rel="noopener noreferrer">
+            Mirror Doxbin.com
           </a>
         </div>
       </div>

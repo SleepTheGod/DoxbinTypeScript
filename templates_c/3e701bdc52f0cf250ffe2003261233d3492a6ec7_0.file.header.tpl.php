@@ -1,6 +1,6 @@
 <?php
 /* Smarty version 3.1.34-dev-7, created on 2019-01-16 22:41:34
-  from '/var/www/html/doxbin.org/smarty/templates/default/header.tpl' */
+  from '/var/www/html/doxbin.com/smarty/templates/default/header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
@@ -11,7 +11,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     '3e701bdc52f0cf250ffe2003261233d3492a6ec7' => 
     array (
-      0 => '/var/www/html/doxbin.org/smarty/templates/default/header.tpl',
+      0 => '/var/www/html/doxbin.com/smarty/templates/default/header.tpl',
       1 => 1547703693,
       2 => 'file',
     ),
@@ -24,7 +24,7 @@ function content_5c40158ecafd19_13822844 (Smarty_Internal_Template $_smarty_tpl)
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-	<base href="/doxbin.org/" />
+	<base href="/doxbin.com/" />
 	<?php if ($_smarty_tpl->tpl_vars['page']->value == 'add' || $_smarty_tpl->tpl_vars['page']->value == 'upload') {?>
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/images/favicons/ms-icon-144x144.png">
