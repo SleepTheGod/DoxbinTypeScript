@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "index.php",
-      "use": "@vercel/php"
-    }
-  ],
   "routes": [
     {
       "src": "/legacy/(.*)",
@@ -14,16 +8,6 @@
     {
       "src": "/images/(.*)",
       "dest": "/images/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.php"
     }
-  ],
-  "functions": {
-    "index.php": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  }
+  ]
 }
