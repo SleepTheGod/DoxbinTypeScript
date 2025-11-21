@@ -8,18 +8,20 @@ export default function HomePage() {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           stroke="#ffffff"
-          strokeWidth="2"
+          strokeWidth="1.5"
         >
-          <path d="M100 40 L85 20 L90 10 L100 5 L110 10 L115 20 L100 40 Z" />
-          <path d="M100 40 L115 20 L120 10 L130 5 L140 10 L145 20 L130 40 L100 40 Z" />
-          <circle cx="85" cy="90" r="3" fill="#ffffff" />
-          <circle cx="115" cy="90" r="3" fill="#ffffff" />
-          <path d="M100 60 Q80 65 70 80 Q65 90 65 100 Q70 130 85 145 Q95 155 100 160 Q105 155 110 125 Q130 130 135 100 Q135 90 130 80 Q120 65 100 60 Z" />
-          <path d="M75 100 Q80 110 90 115" strokeLinecap="round" />
-          <path d="M125 100 Q120 110 110 115" strokeLinecap="round" />
-          <path d="M90 125 Q95 135 100 140 Q105 135 110 125" strokeLinecap="round" />
-          <path d="M70 80 L60 75 L55 80 L60 85 Z" />
-          <path d="M130 80 L140 75 L145 80 L140 85 Z" />
+          {/* Devil horns */}
+          <path d="M70 30 L60 10 L65 5 L75 10 Z" fill="#ffffff" />
+          <path d="M130 30 L140 10 L135 5 L125 10 Z" fill="#ffffff" />
+          {/* Devil head/face */}
+          <circle cx="100" cy="100" r="45" stroke="#ffffff" strokeWidth="2" fill="none" />
+          {/* Evil eyes */}
+          <path d="M85 85 L80 95 L90 95 Z" fill="#ffffff" />
+          <path d="M115 85 L120 95 L110 95 Z" fill="#ffffff" />
+          {/* Evil smile */}
+          <path d="M75 110 Q85 125 100 127 Q115 125 125 110" stroke="#ffffff" strokeWidth="2" fill="none" />
+          {/* Chin/jaw detail */}
+          <path d="M100 140 L90 150 L100 145 L110 150 Z" fill="#ffffff" />
         </svg>
 
         <div className="center-links">

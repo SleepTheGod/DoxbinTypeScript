@@ -1,5 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700";
+@import "https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500";
+
+/* Original doxbin colors - #ebebeb background, #444 dark, #f0523f red accent */
+/* Completely black background theme matching screenshot */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -75,18 +80,6 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-source-sans), "Source Sans Pro", sans-serif;
-
-  /* Original doxbin colors - #ebebeb background, #444 dark, #f0523f red accent */
-  --color-gray-light: #ebebeb;
-  --color-gray-medium: #cdcdcd;
-  --color-gray-dark: #959595;
-  --color-dark: #444;
-  --color-darker: #404040;
-  --color-input: #545454;
-  --color-accent: #f0523f;
-  --color-white: #ffffff;
-
   /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -135,8 +128,6 @@
   }
 }
 
-/* Original doxbin styling */
-/* Completely black background theme matching screenshot */
 body,
 html {
   background: #000000 !important;
@@ -145,6 +136,7 @@ html {
   margin: 0;
   padding: 0;
   color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 a {
@@ -152,8 +144,9 @@ a {
   color: #00bfff;
 }
 
+/* Updated link hover colors to match screenshot */
 a:hover {
-  color: #1e90ff;
+  color: #ff3333; /* Neon bright red hover */
   text-decoration: none;
 }
 
@@ -175,8 +168,24 @@ a:hover {
   height: auto;
 }
 
+/* Updated navbar hover effects to neon bright red */
 .doxbin-navbar .navbar-brand:hover {
-  color: #00bfff !important;
+  color: #ff3333 !important; /* Neon bright red hover */
+}
+
+/* Added centering for main navigation links */
+.doxbin-navbar .navbar-nav {
+  float: none;
+  text-align: center;
+}
+
+.doxbin-navbar .navbar-nav > li {
+  display: inline-block;
+  float: none;
+}
+
+.doxbin-navbar .navbar-right {
+  float: right !important;
 }
 
 .doxbin-navbar .navbar-nav > li > a {
@@ -189,14 +198,15 @@ a:hover {
   line-height: 20px;
 }
 
+/* Updated navbar hover effects to neon bright red */
 .doxbin-navbar .navbar-nav > li > a:hover {
   background-color: transparent !important;
-  color: #ffffff !important;
+  color: #ff3333 !important; /* Neon bright red hover */
 }
 
 .doxbin-navbar .navbar-nav > .active > a {
   background-color: transparent !important;
-  color: #ffffff !important;
+  color: #ff3333 !important; /* Neon bright red for active */
 }
 
 .doxbin-navbar .navbar-toggle {
@@ -222,6 +232,22 @@ a:hover {
   text-align: center;
 }
 
+.devil-logo-ascii {
+  font-family: monospace;
+  font-size: 2px;
+  line-height: 1px;
+  background-color: #060606;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  border: none;
+  color: white;
+  margin: 0 auto 20px;
+  display: inline-block;
+  text-align: left;
+  padding: 0;
+  white-space: pre;
+}
+
 .devil-logo {
   width: 150px;
   height: auto;
@@ -240,8 +266,9 @@ a:hover {
   display: block;
 }
 
+/* Updated link hover colors to match screenshot */
 .center-links a:hover {
-  color: #1e90ff;
+  color: #ff3333; /* Neon bright red hover */
 }
 
 /* Search container styling to match screenshot */
@@ -337,14 +364,16 @@ a:hover {
   border-bottom-right-radius: 2px;
 }
 
+/* Updated pagination hover colors to neon red */
 .pagination a:hover {
   background: #333;
-  color: #ffffff;
+  color: #ff3333; /* Neon bright red hover */
 }
 
+/* Updated pagination hover colors to neon red */
 .pagination a.active {
   background: #333;
-  color: #ffffff;
+  color: #ff3333; /* Neon bright red active page */
 }
 
 /* Table styling to match screenshot - dark theme */
@@ -418,9 +447,10 @@ a:hover {
   font-weight: 400;
 }
 
+/* Updated table link hover to neon red */
 .pinned-pastes table td a:hover,
 .all-pastes table td a:hover {
-  color: #1e90ff;
+  color: #ff3333; /* Neon bright red hover */
 }
 
 /* Special row colors for pinned pastes like in screenshot */
@@ -540,9 +570,10 @@ a:hover {
   font-family: "Source Sans Pro", sans-serif;
 }
 
+/* Updated sidebar button hover colors to neon red */
 .sidebar .button:hover {
-  background: #cdcdcd;
-  color: #444;
+  background: #ff3333; /* Neon bright red hover */
+  color: #ffffff;
 }
 
 .editor-container {
@@ -594,8 +625,9 @@ a:hover {
   color: #444;
 }
 
+/* Updated doxentry link hover colors to neon red */
 .doxentry a:hover {
-  color: #f0523f;
+  color: #ff3333; /* Neon bright red hover */
 }
 
 /* Adding styles for announcements, search, pagination, and tables */

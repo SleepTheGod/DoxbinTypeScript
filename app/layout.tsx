@@ -1,9 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Source_Sans_3 } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
-import { Toaster } from "@/components/ui/toaster"
 import { Navbar } from "@/components/navbar"
 
 const sourceSans = Source_Sans_3({
@@ -28,8 +26,6 @@ export default function RootLayout({
       <body className={`${sourceSans.variable} font-sans antialiased`}>
         <Navbar />
         {children}
-        <Toaster />
-        <Analytics />
       </body>
     </html>
   )

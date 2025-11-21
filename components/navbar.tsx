@@ -14,24 +14,11 @@ export function Navbar() {
       <nav className="navbar navbar-default navbar-fixed-top doxbin-navbar">
         <div className="container-fluid" style={{ paddingLeft: "15px", paddingRight: "15px" }}>
           <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle collapsed"
-              data-toggle="collapse"
-              data-target="#navbar"
-              aria-expanded="false"
-              aria-controls="navbar"
-            >
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
             <Link className="navbar-brand" href="/" style={{ fontSize: "16px", padding: "15px" }}>
               Doxbin
             </Link>
           </div>
-          <div id="navbar" className="collapse navbar-collapse">
+          <div id="navbar" className="navbar-collapse" style={{ display: "block" }}>
             <ul className="nav navbar-nav">
               <li className={pathname === "/" ? "active" : ""}>
                 <Link href="/">Home</Link>
