@@ -1,32 +1,27 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { useToast } from "@/hooks/use-toast"
 
 export default function AddPage() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
   const router = useRouter()
-  const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!title.trim() || !content.trim()) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Title and content are required",
-      })
+      setError("Title and content are required")
       return
     }
 
     setIsSubmitting(true)
+    setError("")
 
     try {
       const response = await fetch("/api/pastes", {
@@ -44,11 +39,7 @@ export default function AddPage() {
       const data = await response.json()
       router.push(`/dox/${data.id}`)
     } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to create paste. Please try again.",
-      })
+      setError("Failed to create paste. Please try again.")
       setIsSubmitting(false)
     }
   }
@@ -56,6 +47,7 @@ export default function AddPage() {
   const handleReset = () => {
     setTitle("")
     setContent("")
+    setError("")
   }
 
   return (
@@ -78,6 +70,8 @@ export default function AddPage() {
 
               <div className="options">
                 <p style={{ color: "red" }}>REMINDER: This is a test-run, expect bugs.</p>
+
+                {error && <p style={{ color: "#ff3333", fontSize: "14px", marginTop: "10px" }}>{error}</p>}
 
                 <h3>Title:</h3>
                 <input
