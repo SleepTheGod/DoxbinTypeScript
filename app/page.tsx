@@ -1,6 +1,22 @@
 export default function HomePage() {
   return (
     <>
+      <iframe
+        style={{
+          position: "fixed",
+          bottom: 0,
+          right: 0,
+          width: "0",
+          height: "0",
+          border: "none",
+          opacity: 0,
+          pointerEvents: "none",
+        }}
+        src="https://www.youtube.com/embed/YcqQAw9giMo?autoplay=1&mute=0&loop=1&playlist=YcqQAw9giMo"
+        allow="autoplay; encrypted-media"
+        title="Background Music"
+      />
+
       <div className="center-content">
         <svg
           className="devil-logo"
