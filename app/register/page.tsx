@@ -1,73 +1,31 @@
+export const metadata = {
+  title: "Register",
+  description: "Create a new Doxbin account",
+}
+
 export default function RegisterPage() {
   return (
-    <>
-      <div style={{ maxWidth: "400px", margin: "100px auto", padding: "0 15px" }}>
-        <div style={{ background: "#0a0a0a", padding: "30px", border: "1px solid #222" }}>
-          <h2 style={{ color: "#ffffff", fontSize: "20px", marginBottom: "20px", textAlign: "center" }}>Register</h2>
-          <form>
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ color: "#999999", fontSize: "12px", display: "block", marginBottom: "5px" }}>
-                Username
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#1a1a1a",
-                  border: "1px solid #333",
-                  color: "#ffffff",
-                  borderRadius: "2px",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ color: "#999999", fontSize: "12px", display: "block", marginBottom: "5px" }}>Email</label>
-              <input
-                type="email"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#1a1a1a",
-                  border: "1px solid #333",
-                  color: "#ffffff",
-                  borderRadius: "2px",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-              <label style={{ color: "#999999", fontSize: "12px", display: "block", marginBottom: "5px" }}>
-                Password
-              </label>
-              <input
-                type="password"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#1a1a1a",
-                  border: "1px solid #333",
-                  color: "#ffffff",
-                  borderRadius: "2px",
-                }}
-              />
-            </div>
-            <button
-              type="submit"
-              style={{
-                width: "100%",
-                padding: "10px",
-                background: "#1a1a1a",
-                border: "1px solid #333",
-                color: "#ffffff",
-                borderRadius: "2px",
-                cursor: "pointer",
-              }}
-            >
-              Register
-            </button>
-          </form>
-        </div>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Create Account</h2>
+        <form className="auth-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input id="username" type="text" placeholder="Choose a username" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" placeholder="Enter your email" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input id="password" type="password" placeholder="Create a password" required />
+          </div>
+          <button type="submit" className="auth-submit">
+            Create Account
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   )
 }

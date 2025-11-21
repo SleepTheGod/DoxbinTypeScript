@@ -1,12 +1,15 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import type React from "react"
+
+import { useEffect, useRef, useState } from "react"
+import Link from "next/link"
 
 export default function HomePage() {
   const audioRef = useRef<HTMLIFrameElement>(null)
+  const [searchQuery, setSearchQuery] = useState("")
 
   useEffect(() => {
-    // Try to autoplay immediately
     const tryAutoplay = () => {
       if (audioRef.current) {
         audioRef.current.src =
@@ -16,7 +19,6 @@ export default function HomePage() {
 
     tryAutoplay()
 
-    // Also try on first user interaction
     const handleInteraction = () => {
       tryAutoplay()
       document.removeEventListener("click", handleInteraction)
@@ -31,6 +33,12 @@ export default function HomePage() {
       document.removeEventListener("keydown", handleInteraction)
     }
   }, [])
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    // TODO: Implement search functionality
+    console.log("[v0] Search query:", searchQuery)
+  }
 
   return (
     <>
@@ -62,58 +70,74 @@ export default function HomePage() {
           stroke="#ffffff"
           strokeWidth="1.5"
         >
-          {/* Devil horns */}
           <path d="M70 30 L60 10 L65 5 L75 10 Z" fill="#ffffff" />
           <path d="M130 30 L140 10 L135 5 L125 10 Z" fill="#ffffff" />
-          {/* Devil head/face */}
           <circle cx="100" cy="100" r="45" stroke="#ffffff" strokeWidth="2" fill="none" />
-          {/* Evil eyes */}
           <path d="M85 85 L80 95 L90 95 Z" fill="#ffffff" />
           <path d="M115 85 L120 95 L110 95 Z" fill="#ffffff" />
-          {/* Evil smile */}
           <path d="M75 110 Q85 125 100 127 Q115 125 125 110" stroke="#ffffff" strokeWidth="2" fill="none" />
-          {/* Chin/jaw detail */}
           <path d="M100 140 L90 150 L100 145 L110 150 Z" fill="#ffffff" />
         </svg>
 
         <div className="center-links">
-          <a href="https://t.me/doxbin" target="_blank" rel="noopener noreferrer">
+          <Link href="https://t.me/doxbin" target="_blank" rel="noopener noreferrer">
             Doxbin Telegram Group
-          </a>
-          <a href="https://twitter.com/doxbin" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://twitter.com/doxbin" target="_blank" rel="noopener noreferrer">
             Official Doxbin Twitter
-          </a>
-          <a href="https://doxbin.com" target="_blank" rel="noopener noreferrer">
+          </Link>
+          <Link href="https://doxbin.com" target="_blank" rel="noopener noreferrer">
             Mirror Doxbin.com
-          </a>
+          </Link>
         </div>
       </div>
 
       <div className="search-container">
         <label className="search-label">Search for a paste</label>
-
-        <form className="search-form">
-          <input type="text" className="search-box" placeholder="Search for..." />
+        <form className="search-form" onSubmit={handleSearch}>
+          <input
+            type="text"
+            className="search-box"
+            placeholder="Search by title, content, or author..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           <button type="submit" className="search-button">
             Search
           </button>
         </form>
       </div>
 
-      <div className="showing-text">Showing 150 (of 61809 total) pastes</div>
+      <div className="showing-text">Showing 150 (of 61,809 total) pastes</div>
 
       <div className="pagination">
-        <a href="javascript:void(0)">&laquo;</a>
-        <a href="javascript:void(0)" className="active">
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          &laquo;
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()} className="active">
           1
         </a>
-        <a href="javascript:void(0)">2</a>
-        <a href="javascript:void(0)">3</a>
-        <a href="javascript:void(0)">4</a>
-        <a href="javascript:void(0)">5</a>
-        <a href="javascript:void(0)">...</a>
-        <a href="javascript:void(0)">413</a>
-        <a href="javascript:void(0)">&raquo;</a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          2
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          3
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          4
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          5
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          ...
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          413
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          &raquo;
+        </a>
       </div>
 
       <div className="pinned-pastes">
@@ -131,45 +155,45 @@ export default function HomePage() {
           <tbody>
             <tr>
               <td>
-                <a href="/dox/1">zalgo poor retard</a>
+                <Link href="/dox/1">zalgo poor retard</Link>
               </td>
               <td>55</td>
-              <td>2251</td>
+              <td>2,251</td>
               <td>
-                <a href="/users/blade69">blade69</a>
+                <Link href="/users/blade69">blade69</Link>
               </td>
               <td>Apr 21st, 2022</td>
             </tr>
             <tr>
               <td>
-                <a href="/dox/2">jackson.bz</a>
+                <Link href="/dox/2">jackson.bz</Link>
               </td>
               <td>11</td>
               <td>957</td>
               <td>
-                <a href="/users/stephen">stephen</a>
+                <Link href="/users/stephen">stephen</Link>
               </td>
               <td>Apr 15th, 2022</td>
             </tr>
             <tr className="green-row">
               <td>
-                <a href="/dox/3">How to Ensure Your Paste Stays Up</a>
+                <Link href="/dox/3">How to Ensure Your Paste Stays Up</Link>
               </td>
               <td>-</td>
-              <td>44455</td>
+              <td>44,455</td>
               <td>
-                <a href="/users/charge">charge [Mod]</a>
+                <Link href="/users/charge">charge [Mod]</Link>
               </td>
               <td>Nov 20th, 2020</td>
             </tr>
             <tr className="red-row">
               <td>
-                <a href="/dox/4">Transparency Report</a>
+                <Link href="/dox/4">Transparency Report</Link>
               </td>
               <td>-</td>
-              <td>61755</td>
+              <td>61,755</td>
               <td>
-                <a href="/users/le-Medamist">le Medamist</a>
+                <Link href="/users/le-Medamist">le Medamist</Link>
               </td>
               <td>Jun 20th, 2020</td>
             </tr>
@@ -191,18 +215,18 @@ export default function HomePage() {
           <tbody id="allPastesBody">
             <tr>
               <td>
-                <a href="/dox/5">Gia Moreno DOXXED EZ HEXED JEWELS XX</a>
+                <Link href="/dox/5">Gia Moreno DOXXED EZ HEXED JEWELS XX</Link>
               </td>
               <td>0</td>
               <td>8</td>
               <td>
-                <a href="/users/archive">Archive</a>
+                <Link href="/users/archive">Archive</Link>
               </td>
               <td>Apr 28th, 2022</td>
             </tr>
             <tr>
               <td>
-                <a href="/dox/6">Fivy 🔥Foreign OaBrokeBoy</a>
+                <Link href="/dox/6">Fivy 🔥Foreign OaBrokeBoy</Link>
               </td>
               <td>0</td>
               <td>9</td>
@@ -211,29 +235,29 @@ export default function HomePage() {
             </tr>
             <tr>
               <td>
-                <a href="/dox/7">how to make sure you pasts stay up</a>
+                <Link href="/dox/7">how to make sure you pasts stay up</Link>
               </td>
               <td>0</td>
               <td>15</td>
               <td>
-                <a href="/users/lurs">lurs</a>
+                <Link href="/users/lurs">lurs</Link>
               </td>
               <td>Apr 28th, 2022</td>
             </tr>
             <tr>
               <td>
-                <a href="/dox/8">damn</a>
+                <Link href="/dox/8">damn</Link>
               </td>
               <td>0</td>
               <td>13</td>
               <td>
-                <a href="/users/lurs">lurs</a>
+                <Link href="/users/lurs">lurs</Link>
               </td>
               <td>Apr 28th, 2022</td>
             </tr>
             <tr>
               <td>
-                <a href="/dox/9">129932132</a>
+                <Link href="/dox/9">129932132</Link>
               </td>
               <td>0</td>
               <td>12</td>
@@ -242,12 +266,12 @@ export default function HomePage() {
             </tr>
             <tr>
               <td>
-                <a href="/dox/10">Mark Zuckerberg Facebook CEO</a>
+                <Link href="/dox/10">Mark Zuckerberg Facebook CEO</Link>
               </td>
               <td>0</td>
               <td>18</td>
               <td>
-                <a href="/users/geoMan1984">GeoMan1984</a>
+                <Link href="/users/geoMan1984">GeoMan1984</Link>
               </td>
               <td>Apr 28th, 2022</td>
             </tr>
@@ -256,23 +280,37 @@ export default function HomePage() {
       </div>
 
       <div className="pagination" id="bottomPagination">
-        <a href="javascript:void(0)">&laquo;</a>
-        <a href="javascript:void(0)" className="active">
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          &laquo;
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()} className="active">
           1
         </a>
-        <a href="javascript:void(0)">2</a>
-        <a href="javascript:void(0)">3</a>
-        <a href="javascript:void(0)">4</a>
-        <a href="javascript:void(0)">5</a>
-        <a href="javascript:void(0)">...</a>
-        <a href="javascript:void(0)">413</a>
-        <a href="javascript:void(0)">&raquo;</a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          2
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          3
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          4
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          5
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          ...
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          413
+        </a>
+        <a href="#" onClick={(e) => e.preventDefault()}>
+          &raquo;
+        </a>
       </div>
-      <div className="showing-text" style={{ marginBottom: "40px" }}>
-        Showing 150 (of 61809 total) pastes
+      <div className="showing-text" style={{ marginBottom: "60px" }}>
+        Showing 150 (of 61,809 total) pastes
       </div>
-
-      {/* Client-side JavaScript for dynamic loading can be added here */}
     </>
   )
 }

@@ -1,25 +1,63 @@
 import Link from "next/link"
-import { Navbar } from "@/components/navbar"
 
 export default function NotFound() {
   return (
-    <>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-      <Navbar />
-
-      <div style={{ marginTop: "100px" }}>
-        <div className="container">
-          <div className="col-md-6 col-md-offset-3">
-            <div className="alert alert-danger text-center">
-              <h2 style={{ marginTop: 0 }}>404 - Paste Not Found</h2>
-              <p>The paste you're looking for doesn't exist or has been removed.</p>
-              <Link href="/" style={{ color: "#f0523f", textDecoration: "underline" }}>
-                Return to Home
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        padding: "20px",
+        textAlign: "center",
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "72px",
+          fontWeight: "700",
+          color: "var(--accent)",
+          margin: "0 0 20px 0",
+        }}
+      >
+        404
+      </h1>
+      <h2
+        style={{
+          fontSize: "24px",
+          fontWeight: "600",
+          color: "var(--foreground)",
+          margin: "0 0 15px 0",
+        }}
+      >
+        Paste Not Found
+      </h2>
+      <p
+        style={{
+          fontSize: "16px",
+          color: "var(--muted-foreground)",
+          margin: "0 0 30px 0",
+          maxWidth: "500px",
+        }}
+      >
+        The paste you're looking for doesn't exist or has been removed.
+      </p>
+      <Link
+        href="/"
+        style={{
+          padding: "12px 24px",
+          background: "var(--secondary)",
+          color: "var(--foreground)",
+          border: "1px solid var(--border)",
+          borderRadius: "var(--radius-md)",
+          fontSize: "14px",
+          fontWeight: "600",
+          transition: "all 0.2s ease",
+        }}
+      >
+        Return to Home
+      </Link>
+    </div>
   )
 }

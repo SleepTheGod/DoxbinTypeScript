@@ -12,13 +12,20 @@ export async function generateMetadata({ params }: PageProps) {
 
   if (!paste) {
     return {
-      title: "Paste Not Found - DoxBin",
+      title: "Paste Not Found",
+      description: "The requested paste could not be found.",
     }
   }
 
   return {
-    title: `${paste.title} - Doxbin`,
-    description: paste.content.substring(0, 155),
+    title: `${paste.title}`,
+    description: paste.content.substring(0, 160) + "...",
+    openGraph: {
+      title: paste.title,
+      description: paste.content.substring(0, 160) + "...",
+      type: "article",
+      publishedTime: paste.created_at,
+    },
   }
 }
 
@@ -30,7 +37,7 @@ export default async function PastePage({ params }: PageProps) {
     notFound()
   }
 
-  await incrementViews(id)
+  incrementViews(id).catch((err) => console.error("[v0] Failed to increment views:", err))
 
   const date = new Date(paste.created_at).toLocaleDateString("en-US", {
     year: "numeric",
@@ -40,8 +47,6 @@ export default async function PastePage({ params }: PageProps) {
 
   return (
     <>
-      <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet" />
       <link href="https://cdn.jsdelivr.net/gh/google/code-prettify@master/styles/tomorrow-night.css" rel="stylesheet" />
       <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js" defer></script>
 
@@ -58,14 +63,21 @@ export default async function PastePage({ params }: PageProps) {
             </Link>
 
             <div className="options">
-              <p>
-                <strong>Title:</strong> {paste.title}
+              <h3>Paste Information</h3>
+              <p style={{ marginBottom: "8px" }}>
+                <strong style={{ color: "#fff" }}>Title:</strong>
+                <br />
+                <span style={{ color: "#999" }}>{paste.title}</span>
               </p>
-              <p>
-                <strong>Created:</strong> {date}
+              <p style={{ marginBottom: "8px" }}>
+                <strong style={{ color: "#fff" }}>Created:</strong>
+                <br />
+                <span style={{ color: "#999" }}>{date}</span>
               </p>
-              <p>
-                <strong>Views:</strong> {paste.views}
+              <p style={{ marginBottom: "8px" }}>
+                <strong style={{ color: "#fff" }}>Views:</strong>
+                <br />
+                <span style={{ color: "#999" }}>{paste.views.toLocaleString()}</span>
               </p>
             </div>
 
@@ -81,14 +93,20 @@ export default async function PastePage({ params }: PageProps) {
                     Raw (R)
                   </Link>
                 </li>
+                <li>
+                  <Link href="/" className="button">
+                    Back to Home
+                  </Link>
+                </li>
               </ul>
             </div>
 
-            <p>
+            <p style={{ fontSize: "12px", lineHeight: "1.6", color: "#999" }}>
               Please note that all posted information is publicly available and must follow our{" "}
-              <Link href="/tos" style={{ textDecoration: "underline" }}>
-                TOS.
+              <Link href="/tos" style={{ textDecoration: "underline", color: "#00bfff" }}>
+                Terms of Service
               </Link>
+              .
             </p>
           </div>
 

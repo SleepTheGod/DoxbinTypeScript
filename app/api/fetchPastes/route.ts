@@ -1,64 +1,31 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { neon } from "@neondatabase/serverless"
+import { getAllPastes, searchPastes, getTotalPastes } from "@/lib/db"
 
 const sql = neon(process.env.DATABASE_URL!)
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
-    const page = Number.parseInt(searchParams.get("page") || "1")
-    const search = searchParams.get("search") || ""
-    const searchType = searchParams.get("searchType") || "title"
-    const limit = 100
+    const page = Math.max(1, Number.parseInt(searchParams.get("page") || "1"))
+    const search = searchParams.get("search")?.trim() || ""
+    const limit = 150
     const offset = (page - 1) * limit
 
     let pastes
-    let totalResult
+    let total
 
     if (search) {
-      if (searchType === "content") {
-        pastes = await sql`
-          SELECT id, title, views, created_at 
-          FROM doxbin_pastes 
-          WHERE content ILIKE ${"%" + search + "%"}
-          ORDER BY created_at DESC 
-          LIMIT ${limit} OFFSET ${offset}
-        `
-        totalResult = await sql`
-          SELECT COUNT(*) as count 
-          FROM doxbin_pastes 
-          WHERE content ILIKE ${"%" + search + "%"}
-        `
-      } else {
-        pastes = await sql`
-          SELECT id, title, views, created_at 
-          FROM doxbin_pastes 
-          WHERE title ILIKE ${"%" + search + "%"}
-          ORDER BY created_at DESC 
-          LIMIT ${limit} OFFSET ${offset}
-        `
-        totalResult = await sql`
-          SELECT COUNT(*) as count 
-          FROM doxbin_pastes 
-          WHERE title ILIKE ${"%" + search + "%"}
-        `
-      }
+      pastes = await searchPastes(search, limit)
+      total = pastes.length // For simplicity, return count of results
     } else {
-      pastes = await sql`
-        SELECT id, title, views, created_at 
-        FROM doxbin_pastes 
-        ORDER BY created_at DESC 
-        LIMIT ${limit} OFFSET ${offset}
-      `
-      totalResult = await sql`
-        SELECT COUNT(*) as count FROM doxbin_pastes
-      `
+      pastes = await getAllPastes(limit, offset)
+      total = await getTotalPastes()
     }
 
-    const total = Number(totalResult[0].count)
     const totalPages = Math.ceil(total / limit)
 
-    const formattedPastes = pastes.map((paste: any) => ({
+    const formattedPastes = pastes.map((paste) => ({
       id: paste.id,
       title: paste.title,
       views: paste.views,
@@ -69,12 +36,20 @@ export async function GET(request: NextRequest) {
       }),
     }))
 
-    return NextResponse.json({
-      pastes: formattedPastes,
-      total,
-      totalPages,
-      currentPage: page,
-    })
+    return NextResponse.json(
+      {
+        pastes: formattedPastes,
+        total,
+        totalPages,
+        currentPage: page,
+        hasMore: page < totalPages,
+      },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=120",
+        },
+      },
+    )
   } catch (error) {
     console.error("[v0] Error fetching pastes:", error)
     return NextResponse.json({ error: "Failed to fetch pastes" }, { status: 500 })

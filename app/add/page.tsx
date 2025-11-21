@@ -39,6 +39,7 @@ export default function AddPage() {
       const data = await response.json()
       router.push(`/dox/${data.id}`)
     } catch (error) {
+      console.log("[v0] Error creating paste:", error)
       setError("Failed to create paste. Please try again.")
       setIsSubmitting(false)
     }
@@ -50,77 +51,109 @@ export default function AddPage() {
     setError("")
   }
 
-  return (
-    <>
-      <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet" />
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      // CMD+S or CTRL+S to save
+      if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+        e.preventDefault()
+        if (!isSubmitting && title.trim() && content.trim()) {
+          handleSubmit(e as any)
+        }
+      }
+    }
 
-      <div className="bin-body">
-        <div className="wrapper">
-          <form onSubmit={handleSubmit} className="editor-form" style={{ display: "flex", width: "100%" }}>
-            <div className="sidebar">
-              <Link href="/">
-                <pre>{`  ____            _     _       
+    document.addEventListener("keydown", handleKeyPress)
+    return () => document.removeEventListener("keydown", handleKeyPress)
+  }, [title, content, isSubmitting])
+
+  return (
+    <div className="bin-body">
+      <div className="wrapper">
+        <form onSubmit={handleSubmit} className="editor-form" style={{ display: "flex", width: "100%" }}>
+          <div className="sidebar">
+            <Link href="/">
+              <pre>{`  ____            _     _       
  |  _ \\  _____  _| |__ (_)_ __  
  | | | |/ _ \\ \\/ / '_ \\| | '_ \\ 
  | |_| | (_) >  <| |_) | | | | |
  |____/ \\___/_/\\_\\_.__/|_|_| |_|
                                 `}</pre>
-              </Link>
+            </Link>
 
-              <div className="options">
-                <p style={{ color: "red" }}>REMINDER: This is a test-run, expect bugs.</p>
+            <div className="options">
+              <p style={{ color: "#ff6b5a", fontWeight: "500", fontSize: "13px" }}>Create a new paste</p>
 
-                {error && <p style={{ color: "#ff3333", fontSize: "14px", marginTop: "10px" }}>{error}</p>}
+              {error && (
+                <p
+                  style={{
+                    color: "#ff3333",
+                    fontSize: "13px",
+                    marginTop: "12px",
+                    padding: "10px",
+                    background: "rgba(255, 51, 51, 0.1)",
+                    borderRadius: "4px",
+                  }}
+                >
+                  {error}
+                </p>
+              )}
 
-                <h3>Title:</h3>
-                <input
-                  type="text"
-                  name="doxTitle"
-                  maxLength={70}
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  required
-                />
-              </div>
-
-              <div className="options">
-                <ul>
-                  <li>
-                    <button type="submit" className="button" disabled={isSubmitting}>
-                      {isSubmitting ? "Saving..." : "Save (CMD+S)"}
-                    </button>
-                  </li>
-                  <li>
-                    <button type="button" onClick={handleReset} className="button">
-                      Clear
-                    </button>
-                  </li>
-                </ul>
-              </div>
-
-              <p>
-                Please note that all posted information is publicly available and must follow our{" "}
-                <Link href="/tos" style={{ textDecoration: "underline" }}>
-                  TOS.
-                </Link>
-              </p>
-            </div>
-
-            <div className="editor-container">
-              <textarea
-                name="dox"
-                className="editor mousetrap"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-                wrap="off"
+              <h3>Title:</h3>
+              <input
+                type="text"
+                name="doxTitle"
+                maxLength={70}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Enter paste title..."
                 required
-                placeholder="Enter your content here..."
               />
             </div>
-          </form>
-        </div>
+
+            <div className="options">
+              <ul>
+                <li>
+                  <button type="submit" className="button" disabled={isSubmitting}>
+                    {isSubmitting ? "Saving..." : "Save (CMD+S)"}
+                  </button>
+                </li>
+                <li>
+                  <button type="button" onClick={handleReset} className="button">
+                    Clear
+                  </button>
+                </li>
+                <li>
+                  <Link href="/" className="button">
+                    Cancel
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <p style={{ fontSize: "12px", lineHeight: "1.6", color: "#999" }}>
+              Please note that all posted information is publicly available and must follow our{" "}
+              <Link href="/tos" style={{ textDecoration: "underline", color: "#00bfff" }}>
+                Terms of Service
+              </Link>
+              .
+            </p>
+          </div>
+
+          <div className="editor-container">
+            <textarea
+              name="dox"
+              className="editor mousetrap"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              wrap="off"
+              required
+              placeholder="Enter your paste content here...&#10;&#10;Keyboard shortcuts:&#10;• CMD/CTRL + S - Save paste"
+            />
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   )
 }
+
+import { useEffect } from "react"

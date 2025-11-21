@@ -1,59 +1,27 @@
+export const metadata = {
+  title: "Login",
+  description: "Login to your Doxbin account",
+}
+
 export default function LoginPage() {
   return (
-    <>
-      <div style={{ maxWidth: "400px", margin: "100px auto", padding: "0 15px" }}>
-        <div style={{ background: "#0a0a0a", padding: "30px", border: "1px solid #222" }}>
-          <h2 style={{ color: "#ffffff", fontSize: "20px", marginBottom: "20px", textAlign: "center" }}>Login</h2>
-          <form>
-            <div style={{ marginBottom: "15px" }}>
-              <label style={{ color: "#999999", fontSize: "12px", display: "block", marginBottom: "5px" }}>
-                Username
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#1a1a1a",
-                  border: "1px solid #333",
-                  color: "#ffffff",
-                  borderRadius: "2px",
-                }}
-              />
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-              <label style={{ color: "#999999", fontSize: "12px", display: "block", marginBottom: "5px" }}>
-                Password
-              </label>
-              <input
-                type="password"
-                style={{
-                  width: "100%",
-                  padding: "10px",
-                  background: "#1a1a1a",
-                  border: "1px solid #333",
-                  color: "#ffffff",
-                  borderRadius: "2px",
-                }}
-              />
-            </div>
-            <button
-              type="submit"
-              style={{
-                width: "100%",
-                padding: "10px",
-                background: "#1a1a1a",
-                border: "1px solid #333",
-                color: "#ffffff",
-                borderRadius: "2px",
-                cursor: "pointer",
-              }}
-            >
-              Login
-            </button>
-          </form>
-        </div>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Login to Doxbin</h2>
+        <form className="auth-form">
+          <div className="form-group">
+            <label htmlFor="username">Username</label>
+            <input id="username" type="text" placeholder="Enter your username" required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <input id="password" type="password" placeholder="Enter your password" required />
+          </div>
+          <button type="submit" className="auth-submit">
+            Login
+          </button>
+        </form>
       </div>
-    </>
+    </div>
   )
 }
