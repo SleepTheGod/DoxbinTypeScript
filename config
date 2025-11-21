@@ -1,0 +1,8 @@
+{
+  "db_host": "127.0.0.1",
+  "db_user": "doxbin_user",
+  "db_pass": "",
+  "db_db": "doxbin",
+  "cap_sec_key": "",
+  "cap_site_key": ""
+}

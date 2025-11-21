@@ -1,0 +1,625 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --font-sans: var(--font-source-sans), "Source Sans Pro", sans-serif;
+
+  /* Original doxbin colors - #ebebeb background, #444 dark, #f0523f red accent */
+  --color-gray-light: #ebebeb;
+  --color-gray-medium: #cdcdcd;
+  --color-gray-dark: #959595;
+  --color-dark: #444;
+  --color-darker: #404040;
+  --color-input: #545454;
+  --color-accent: #f0523f;
+  --color-white: #ffffff;
+
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Original doxbin styling */
+/* Completely black background theme matching screenshot */
+body,
+html {
+  background: #000000 !important;
+  font-size: 13px;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: #00bfff;
+}
+
+a:hover {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+/* Exact navbar styling from screenshot - black background */
+.doxbin-navbar {
+  background-color: #000000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-bottom: 1px solid #222 !important;
+  min-height: 45px !important;
+}
+
+.doxbin-navbar .navbar-brand {
+  color: #ffffff !important;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px !important;
+  padding: 12px 15px !important;
+  height: auto;
+}
+
+.doxbin-navbar .navbar-brand:hover {
+  color: #00bfff !important;
+}
+
+.doxbin-navbar .navbar-nav > li > a {
+  color: #999999 !important;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  padding: 12px 15px !important;
+  font-size: 13px !important;
+  height: auto;
+  line-height: 20px;
+}
+
+.doxbin-navbar .navbar-nav > li > a:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.doxbin-navbar .navbar-nav > .active > a {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.doxbin-navbar .navbar-toggle {
+  border-color: #ffffff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.doxbin-navbar .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+
+.doxbin-navbar .container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Center content area styling */
+.center-content {
+  max-width: 800px;
+  margin: 80px auto 30px;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.devil-logo {
+  width: 150px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.center-links {
+  margin: 20px 0;
+}
+
+.center-links a {
+  color: #00bfff;
+  font-size: 15px;
+  margin: 5px 0;
+  display: block;
+}
+
+.center-links a:hover {
+  color: #1e90ff;
+}
+
+/* Search container styling to match screenshot */
+.search-container {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.search-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #999999;
+  text-align: center;
+}
+
+.search-form {
+  display: flex;
+  gap: 5px;
+}
+
+.search-box {
+  flex: 1;
+  padding: 8px 12px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #ffffff;
+  border-radius: 2px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #00bfff;
+  background: #222;
+}
+
+.search-button {
+  padding: 8px 20px;
+  background: #1a1a1a;
+  color: #ffffff;
+  border: 1px solid #333;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 400;
+}
+
+.search-button:hover {
+  background: #333;
+  border-color: #444;
+}
+
+.showing-text {
+  text-align: center;
+  margin: 15px 0 10px;
+  color: #666666;
+  font-size: 12px;
+}
+
+/* Pagination styling to match screenshot */
+.pagination {
+  display: inline-flex;
+  justify-content: center;
+  gap: 0px;
+  width: 100%;
+  margin: 10px 0 20px;
+}
+
+.pagination a {
+  padding: 6px 10px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-right: none;
+  color: #999999;
+  text-decoration: none;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.pagination a:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.pagination a:last-child {
+  border-right: 1px solid #333;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.pagination a:hover {
+  background: #333;
+  color: #ffffff;
+}
+
+.pagination a.active {
+  background: #333;
+  color: #ffffff;
+}
+
+/* Table styling to match screenshot - dark theme */
+.pinned-pastes,
+.all-pastes {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.pinned-pastes h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.pinned-pastes table,
+.all-pastes table {
+  width: 100%;
+  background: #0a0a0a;
+  border-collapse: collapse;
+  border: 1px solid #222;
+}
+
+.pinned-pastes table thead,
+.all-pastes table thead {
+  background: #1a1a1a;
+  border-bottom: 1px solid #333;
+}
+
+.pinned-pastes table th,
+.all-pastes table th {
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 12px;
+  border-right: 1px solid #222;
+}
+
+.pinned-pastes table th:last-child,
+.all-pastes table th:last-child {
+  border-right: none;
+}
+
+.pinned-pastes table td,
+.all-pastes table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #1a1a1a;
+  border-right: 1px solid #1a1a1a;
+  font-size: 12px;
+  color: #999999;
+}
+
+.pinned-pastes table td:last-child,
+.all-pastes table td:last-child {
+  border-right: none;
+}
+
+.pinned-pastes table tbody tr:hover,
+.all-pastes table tbody tr:hover {
+  background: #1a1a1a;
+}
+
+.pinned-pastes table td a,
+.all-pastes table td a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.pinned-pastes table td a:hover,
+.all-pastes table td a:hover {
+  color: #1e90ff;
+}
+
+/* Special row colors for pinned pastes like in screenshot */
+.pinned-pastes table tbody tr.green-row {
+  background: #1a3d1a !important;
+}
+
+.pinned-pastes table tbody tr.green-row:hover {
+  background: #204d20 !important;
+}
+
+.pinned-pastes table tbody tr.red-row {
+  background: #3d1a1a !important;
+}
+
+.pinned-pastes table tbody tr.red-row:hover {
+  background: #4d2020 !important;
+}
+
+.loading {
+  text-align: center;
+  color: #666666;
+  font-style: italic;
+  padding: 20px !important;
+}
+
+@media (max-width: 768px) {
+  .pinned-pastes table th:nth-child(2),
+  .pinned-pastes table td:nth-child(2),
+  .pinned-pastes table th:nth-child(3),
+  .pinned-pastes table td:nth-child(3),
+  .all-pastes table th:nth-child(2),
+  .all-pastes table td:nth-child(2),
+  .all-pastes table th:nth-child(3),
+  .all-pastes table td:nth-child(3) {
+    display: none;
+  }
+}
+
+/* Bin editor styles for add/upload pages */
+.bin-body {
+  background: #1d1f21;
+  color: #c5c8c6;
+  font-family: "Source Code Pro", monospace;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 300px;
+  background: #282a2e;
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar pre {
+  color: #f0523f;
+  font-size: 10px;
+  margin: 0 0 20px 0;
+  cursor: pointer;
+}
+
+.sidebar h3 {
+  font-size: 14px;
+  margin: 15px 0 10px 0;
+  color: #c5c8c6;
+}
+
+.sidebar .options {
+  margin-bottom: 20px;
+}
+
+.sidebar input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  background: #545454;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.sidebar input[type="text"]:focus {
+  outline: none;
+  background: #5a5a5a;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar .button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #545454;
+  color: white;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.sidebar .button:hover {
+  background: #cdcdcd;
+  color: #444;
+}
+
+.editor-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editor {
+  flex: 1;
+  width: 100%;
+  background: #1d1f21;
+  color: #c5c8c6;
+  border: none;
+  padding: 20px;
+  font-family: "Source Code Pro", monospace;
+  font-size: 14px;
+  resize: none;
+  overflow: auto;
+}
+
+.editor:focus {
+  outline: none;
+}
+
+.prettyprint {
+  background: #1d1f21 !important;
+  color: #c5c8c6 !important;
+  border: none !important;
+  padding: 20px;
+  overflow: auto;
+}
+
+/* Table styling for paste list */
+.table {
+  background: white;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #f0f0f0;
+}
+
+.doxentry a {
+  color: #444;
+}
+
+.doxentry a:hover {
+  color: #f0523f;
+}
+
+/* Adding styles for announcements, search, pagination, and tables */
+
+.announcements {
+  max-width: 800px;
+  margin: 80px auto 20px;
+  padding: 0 15px;
+}
+
+.announcement {
+  background: #282828;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 2px;
+}
+
+.announcement a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.announcement a:hover {
+  text-decoration: underline;
+}

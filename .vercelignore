@@ -1,0 +1,24 @@
+# Ignore Next.js and Node.js files
+node_modules/
+.next/
+app/
+components/
+hooks/
+lib/
+public/
+*.tsx
+*.ts
+*.mjs
+package.json
+package-lock.json
+pnpm-lock.yaml
+tsconfig.json
+next.config.mjs
+postcss.config.mjs
+components.json
+
+# Keep PHP files
+!*.php
+!smarty/
+!legacy/
+!images/
