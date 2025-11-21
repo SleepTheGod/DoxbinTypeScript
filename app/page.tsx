@@ -1,20 +1,56 @@
+"use client"
+
+import { useEffect, useRef } from "react"
+
 export default function HomePage() {
+  const audioRef = useRef<HTMLIFrameElement>(null)
+
+  useEffect(() => {
+    // Try to autoplay immediately
+    const tryAutoplay = () => {
+      if (audioRef.current) {
+        audioRef.current.src =
+          "https://www.youtube.com/embed/YcqQAw9giMo?autoplay=1&mute=0&loop=1&playlist=YcqQAw9giMo&volume=100"
+      }
+    }
+
+    tryAutoplay()
+
+    // Also try on first user interaction
+    const handleInteraction = () => {
+      tryAutoplay()
+      document.removeEventListener("click", handleInteraction)
+      document.removeEventListener("keydown", handleInteraction)
+    }
+
+    document.addEventListener("click", handleInteraction)
+    document.addEventListener("keydown", handleInteraction)
+
+    return () => {
+      document.removeEventListener("click", handleInteraction)
+      document.removeEventListener("keydown", handleInteraction)
+    }
+  }, [])
+
   return (
     <>
       <iframe
+        ref={audioRef}
         style={{
           position: "fixed",
           bottom: 0,
           right: 0,
-          width: "0",
-          height: "0",
+          width: "1px",
+          height: "1px",
           border: "none",
           opacity: 0,
           pointerEvents: "none",
+          zIndex: -1,
         }}
-        src="https://www.youtube.com/embed/YcqQAw9giMo?autoplay=1&mute=0&loop=1&playlist=YcqQAw9giMo"
-        allow="autoplay; encrypted-media"
+        src="https://www.youtube.com/embed/YcqQAw9giMo?autoplay=1&mute=0&loop=1&playlist=YcqQAw9giMo&controls=0&enablejsapi=1"
+        allow="autoplay; encrypted-media; fullscreen"
         title="Background Music"
+        allowFullScreen
       />
 
       <div className="center-content">
@@ -236,14 +272,7 @@ export default function HomePage() {
         Showing 150 (of 61809 total) pastes
       </div>
 
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-        // Client-side JavaScript for dynamic loading can be added here
-        console.log('Doxbin clone loaded');
-      `,
-        }}
-      />
+      {/* Client-side JavaScript for dynamic loading can be added here */}
     </>
   )
 }
