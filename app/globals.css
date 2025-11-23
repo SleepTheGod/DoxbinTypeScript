@@ -4,24 +4,24 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #f5f5f5;
-  --card-foreground: #000000;
-  --popover: #ffffff;
-  --popover-foreground: #000000;
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
   --primary: #00bfff;
   --primary-foreground: #ffffff;
-  --secondary: #f5f5f5;
-  --secondary-foreground: #000000;
-  --muted: #f0f0f0;
-  --muted-foreground: #666666;
-  --accent: #ff3333;
+  --secondary: #2a2a2a;
+  --secondary-foreground: #ffffff;
+  --muted: #333333;
+  --muted-foreground: #a0a0a0;
+  --accent: #f0523f;
   --accent-foreground: #ffffff;
-  --destructive: #ff3333;
+  --destructive: #f0523f;
   --destructive-foreground: #ffffff;
-  --border: #e0e0e0;
-  --input: #ffffff;
+  --border: #333333;
+  --input: #1a1a1a;
   --ring: #00bfff;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -29,14 +29,14 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.125rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #f0523f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a2a2a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #333333;
+  --sidebar-ring: #666666;
 }
 
 .dark {
@@ -131,7 +131,7 @@
   }
 
   html {
-    background: #fff;
+    background: #000000;
     scroll-behavior: smooth;
   }
 }
@@ -147,12 +147,12 @@ a:hover {
   color: var(--accent);
 }
 
-/* Updated navbar styling for production */
+/* Updated navbar styling for pure black theme */
 .doxbin-navbar {
-  background-color: #ffffff !important;
+  background-color: #1a1a1a !important;
   border: none !important;
   border-radius: 0 !important;
-  border-bottom: 1px solid var(--border) !important;
+  border-bottom: 1px solid #333333 !important;
   min-height: 50px !important;
   position: fixed;
   top: 0;
@@ -162,7 +162,7 @@ a:hover {
 }
 
 .doxbin-navbar .navbar-brand {
-  color: var(--foreground) !important;
+  color: #ffffff !important;
   font-weight: 600;
   font-size: 18px !important;
   padding: 14px 15px !important;
@@ -170,7 +170,7 @@ a:hover {
 }
 
 .doxbin-navbar .navbar-brand:hover {
-  color: var(--accent) !important;
+  color: #f0523f !important;
 }
 
 .doxbin-navbar .navbar-nav {
@@ -189,7 +189,7 @@ a:hover {
 }
 
 .doxbin-navbar .navbar-nav > li > a {
-  color: var(--muted-foreground) !important;
+  color: #a0a0a0 !important;
   font-weight: 400;
   padding: 14px 15px !important;
   font-size: 13px !important;
@@ -200,22 +200,22 @@ a:hover {
 
 .doxbin-navbar .navbar-nav > li > a:hover {
   background-color: transparent !important;
-  color: var(--accent) !important;
+  color: #f0523f !important;
 }
 
 .doxbin-navbar .navbar-nav > .active > a {
   background-color: transparent !important;
-  color: var(--accent) !important;
+  color: #f0523f !important;
 }
 
 .doxbin-navbar .navbar-toggle {
-  border-color: var(--foreground);
+  border-color: #ffffff;
   margin-top: 8px;
   margin-bottom: 8px;
 }
 
 .doxbin-navbar .navbar-toggle .icon-bar {
-  background-color: var(--foreground);
+  background-color: #ffffff;
 }
 
 .doxbin-navbar .container-fluid {
@@ -382,24 +382,24 @@ a:hover {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 15px;
-  color: var(--foreground);
+  color: #ffffff;
   text-align: left;
 }
 
 .pinned-pastes table,
 .all-pastes table {
   width: 100%;
-  background: #ffffff;
+  background: #1a1a1a;
   border-collapse: collapse;
-  border: 1px solid var(--border);
+  border: 1px solid #333333;
   border-radius: var(--radius-md);
   overflow: hidden;
 }
 
 .pinned-pastes table thead,
 .all-pastes table thead {
-  background: #f5f5f5;
-  border-bottom: 2px solid var(--border);
+  background: #2a2a2a;
+  border-bottom: 2px solid #333333;
 }
 
 .pinned-pastes table th,
@@ -407,9 +407,9 @@ a:hover {
   padding: 12px 14px;
   text-align: left;
   font-weight: 600;
-  color: var(--foreground);
+  color: #ffffff;
   font-size: 13px;
-  border-right: 1px solid var(--border);
+  border-right: 1px solid #333333;
 }
 
 .pinned-pastes table th:last-child,
@@ -420,10 +420,10 @@ a:hover {
 .pinned-pastes table td,
 .all-pastes table td {
   padding: 12px 14px;
-  border-bottom: 1px solid var(--border);
-  border-right: 1px solid var(--border);
+  border-bottom: 1px solid #333333;
+  border-right: 1px solid #333333;
   font-size: 13px;
-  color: var(--muted-foreground);
+  color: #a0a0a0;
 }
 
 .pinned-pastes table td:last-child,
@@ -441,19 +441,19 @@ a:hover {
 
 .pinned-pastes table tbody tr:hover,
 .all-pastes table tbody tr:hover {
-  background: #f9f9f9;
+  background: #2a2a2a;
 }
 
 .pinned-pastes table td a,
 .all-pastes table td a {
-  color: var(--primary);
+  color: #00bfff;
   text-decoration: none;
   font-weight: 400;
 }
 
 .pinned-pastes table td a:hover,
 .all-pastes table td a:hover {
-  color: var(--accent);
+  color: #f0523f;
 }
 
 /* Special row colors for pinned pastes */
@@ -482,7 +482,7 @@ a:hover {
 
 /* Bin editor styles for add/upload pages */
 .bin-body {
-  background: #1d1f21;
+  background: #000000;
   color: #c5c8c6;
   font-family: var(--font-mono);
   margin: 0;
@@ -499,12 +499,12 @@ a:hover {
 
 .sidebar {
   width: 320px;
-  background: #282a2e;
+  background: #1a1a1a;
   color: white;
   padding: 25px;
   overflow-y: auto;
   flex-shrink: 0;
-  border-right: 1px solid #1a1a1a;
+  border-right: 1px solid #333333;
 }
 
 .sidebar pre {
@@ -540,8 +540,8 @@ a:hover {
 .sidebar input[type="text"] {
   width: 100%;
   padding: 10px 12px;
-  background: #1a1a1a;
-  border: 1px solid #444;
+  background: #0a0a0a;
+  border: 1px solid #333333;
   color: white;
   border-radius: var(--radius-md);
   font-size: 13px;
@@ -551,7 +551,7 @@ a:hover {
 
 .sidebar input[type="text"]:focus {
   outline: none;
-  background: #222;
+  background: #1a1a1a;
   border-color: #00bfff;
 }
 
@@ -572,10 +572,10 @@ a:hover {
   display: block;
   width: 100%;
   padding: 12px;
-  background: #1a1a1a;
+  background: #0a0a0a;
   color: white;
   text-align: center;
-  border: 1px solid #444;
+  border: 1px solid #333333;
   cursor: pointer;
   border-radius: var(--radius-md);
   font-family: inherit;
@@ -597,8 +597,8 @@ a:hover {
 }
 
 .sidebar .button:disabled:hover {
-  background: #1a1a1a;
-  border-color: #444;
+  background: #0a0a0a;
+  border-color: #333333;
 }
 
 .editor-container {
@@ -611,7 +611,7 @@ a:hover {
 .editor {
   flex: 1;
   width: 100%;
-  background: #1d1f21;
+  background: #000000;
   color: #c5c8c6;
   border: none;
   padding: 25px;
@@ -632,7 +632,7 @@ a:hover {
 
 .prettyprint,
 .predox {
-  background: #1d1f21 !important;
+  background: #000000 !important;
   color: #c5c8c6 !important;
   border: none !important;
   padding: 25px;
@@ -685,14 +685,14 @@ a:hover {
 }
 
 .auth-card {
-  background: var(--card);
+  background: #282a2e;
   padding: 40px;
-  border: 1px solid var(--border);
+  border: 1px solid #444444;
   border-radius: var(--radius-lg);
 }
 
 .auth-card h2 {
-  color: var(--foreground);
+  color: #ffffff;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 30px;
@@ -712,7 +712,7 @@ a:hover {
 }
 
 .form-group label {
-  color: var(--muted-foreground);
+  color: #a0a0a0;
   font-size: 13px;
   font-weight: 500;
 }
@@ -720,9 +720,9 @@ a:hover {
 .form-group input {
   width: 100%;
   padding: 12px 14px;
-  background: var(--input);
-  border: 1px solid var(--border);
-  color: var(--foreground);
+  background: #1d1f21;
+  border: 1px solid #444444;
+  color: #ffffff;
   border-radius: var(--radius-md);
   font-size: 14px;
   font-family: inherit;
@@ -731,20 +731,20 @@ a:hover {
 
 .form-group input:focus {
   outline: none;
-  border-color: var(--primary);
-  background: var(--secondary);
+  border-color: #00bfff;
+  background: #282a2e;
 }
 
 .form-group input::placeholder {
-  color: var(--muted-foreground);
+  color: #666666;
 }
 
 .auth-submit {
   width: 100%;
   padding: 12px;
-  background: var(--secondary);
-  color: var(--foreground);
-  border: 1px solid var(--border);
+  background: #383838;
+  color: #ffffff;
+  border: 1px solid #444444;
   border-radius: var(--radius-md);
   cursor: pointer;
   font-size: 14px;
@@ -754,8 +754,8 @@ a:hover {
 }
 
 .auth-submit:hover {
-  background: var(--muted);
-  border-color: var(--primary);
+  background: #f0523f;
+  border-color: #f0523f;
 }
 
 /* TOS page styling */
@@ -766,21 +766,21 @@ a:hover {
 }
 
 .tos-card {
-  background: var(--card);
+  background: #282a2e;
   padding: 50px;
-  border: 1px solid var(--border);
+  border: 1px solid #444444;
   border-radius: var(--radius-lg);
 }
 
 .tos-card h1 {
-  color: var(--foreground);
+  color: #ffffff;
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 40px;
 }
 
 .tos-card h2 {
-  color: var(--foreground);
+  color: #ffffff;
   font-size: 20px;
   font-weight: 600;
   margin: 30px 0 15px 0;
@@ -791,7 +791,7 @@ a:hover {
 }
 
 .tos-card p {
-  color: var(--muted-foreground);
+  color: #a0a0a0;
   line-height: 1.8;
   margin-bottom: 15px;
 }
@@ -799,7 +799,7 @@ a:hover {
 .tos-card ul {
   margin-left: 25px;
   margin-top: 12px;
-  color: var(--muted-foreground);
+  color: #a0a0a0;
   line-height: 1.8;
 }
 

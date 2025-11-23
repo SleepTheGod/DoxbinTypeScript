@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 
@@ -39,7 +39,6 @@ export default function AddPage() {
       const data = await response.json()
       router.push(`/dox/${data.id}`)
     } catch (error) {
-      console.log("[v0] Error creating paste:", error)
       setError("Failed to create paste. Please try again.")
       setIsSubmitting(false)
     }
@@ -155,5 +154,3 @@ export default function AddPage() {
     </div>
   )
 }
-
-import { useEffect } from "react"

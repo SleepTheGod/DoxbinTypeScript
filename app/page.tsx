@@ -36,8 +36,9 @@ export default function HomePage() {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Implement search functionality
-    console.log("[v0] Search query:", searchQuery)
+    if (searchQuery.trim()) {
+      window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`
+    }
   }
 
   return (

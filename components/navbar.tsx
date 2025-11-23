@@ -26,8 +26,8 @@ export function Navbar() {
               <li className={pathname === "/add" ? "active" : ""}>
                 <Link href="/add">Add Paste</Link>
               </li>
-              <li className={pathname === "/users" ? "active" : ""}>
-                <Link href="/users">Users</Link>
+              <li className={pathname === "/members" ? "active" : ""}>
+                <Link href="/members">Members</Link>
               </li>
               <li className={pathname === "/upgrades" ? "active" : ""}>
                 <Link href="/upgrades">Upgrades</Link>

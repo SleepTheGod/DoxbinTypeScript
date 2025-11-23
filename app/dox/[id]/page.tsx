@@ -37,7 +37,7 @@ export default async function PastePage({ params }: PageProps) {
     notFound()
   }
 
-  incrementViews(id).catch((err) => console.error("[v0] Failed to increment views:", err))
+  incrementViews(id).catch(() => {})
 
   const date = new Date(paste.created_at).toLocaleDateString("en-US", {
     year: "numeric",
